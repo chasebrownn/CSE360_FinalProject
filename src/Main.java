@@ -1,3 +1,3 @@
 public class Main {
-    //brandon eats ass
+    // github sucks
 }
