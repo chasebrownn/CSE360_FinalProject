@@ -41,9 +41,6 @@ public abstract class MainFrame extends JFrame implements ActionListener
 		aboutUs.addActionListener(new ActionListener() { 
 			public void actionPerformed(ActionEvent e)
 			{
-				//insert roster stuff
-				Roster mainRoster = new Roster();
-				
 				JOptionPane.showMessageDialog(mainFrame, "CSE360 Team: Keenan High, Brandon Phillips, Chase Brown, Jemiah Martin, Sergio Castillo"); //dialog box pop up with names
 			}
 		});
@@ -57,6 +54,8 @@ public abstract class MainFrame extends JFrame implements ActionListener
 				{
 				case JFileChooser.APPROVE_OPTION:
 					//LOAD ROSTER METHOD Here
+					Roster mainRoster = new Roster();
+					
 					JOptionPane.showMessageDialog(mainFrame, "This is where we need to use the load method"); // get rid of this for the lead method
 					break;
 				}
