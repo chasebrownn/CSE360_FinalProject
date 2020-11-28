@@ -17,6 +17,16 @@ public class Roster {
         this.asurite = asurite;
     }
 
+    public Roster() 
+    {
+    	student_id = 1234567890;
+    	first_name = "first";
+    	last_name = "last";
+    	major = "major";
+    	level = "level";
+    	asurite = "asurite";
+    }
+    
     public int getId()
     {
         return student_id;
