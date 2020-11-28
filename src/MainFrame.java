@@ -1,8 +1,10 @@
 import java.io.*;
+import java.util.ArrayList;
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
 import javax.swing.JFileChooser;
+import java.util.List;
 
 public abstract class MainFrame extends JFrame implements ActionListener
 {
@@ -22,11 +24,7 @@ public abstract class MainFrame extends JFrame implements ActionListener
 	
 	static JFrame mainFrame; //main window for the application
 	
-	public static Roster roster[] = new Roster[50];
-	
-	public static Roster startRoster = new Roster();
-	
-	public static Roster mainRoster = new Roster();
+	public static List<Roster> roster = new ArrayList<>();
 	
 	public static void load(File csvFile)
     {
@@ -37,18 +35,18 @@ public abstract class MainFrame extends JFrame implements ActionListener
             BufferedReader br = new BufferedReader(fr);
             String line = "";
             String[] tempArr;
-            int i = 0;
+ 
             while((line = br.readLine()) != null)
             {
-            	roster[i] = startRoster;
+            	Roster added = new Roster();
                 tempArr = line.split(delimiter);
-                roster[i].setId(Integer.parseInt(tempArr[0]));
-                roster[i].setFirstName(tempArr[1]);
-                roster[i].setLastName(tempArr[2]);
-                roster[i].setMajor(tempArr[3]);
-                roster[i].setLevel(tempArr[4]);
-                roster[i].setAsurite(tempArr[5]);
-                i++;
+                added.setId(Integer.parseInt(tempArr[0]));
+                added.setFirstName(tempArr[1]);
+                added.setLastName(tempArr[2]);
+                added.setMajor(tempArr[3]);
+                added.setLevel(tempArr[4]);
+                added.setAsurite(tempArr[5]);
+                roster.add(added);
             }
             br.close();
         } catch(IOException ioe) {
@@ -112,7 +110,7 @@ public abstract class MainFrame extends JFrame implements ActionListener
 						ioe.printStackTrace();
 					}*/
 					
-					JOptionPane.showMessageDialog(mainFrame, roster[0].getFirstName() + " " + roster[1].getFirstName());
+					JOptionPane.showMessageDialog(mainFrame, roster.get(0).getFirstName() + " " + roster.get(1).getFirstName());
 					// get rid of this for the lead method
 					break;
 				}
