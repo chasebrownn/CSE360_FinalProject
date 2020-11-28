@@ -22,28 +22,34 @@ public abstract class MainFrame extends JFrame implements ActionListener
 	
 	static JFrame mainFrame; //main window for the application
 	
-	//work again
+	public static Roster mainRoster = new Roster();
+	
 	public static void load(File csvFile)
-	{
-		Roster mainRoster = new Roster();
-		try 
-		{
-			FileReader fr = new FileReader(csvFile);
-			BufferedReader br = new BufferedReader(fr);
-			String line = "";
-			String[] tempArr;
-			while((line = br.readLine()) != null)
-			{
-				tempArr = line.split(delimiter);
-				mainRoster.setId(Integer.parseInt(tempArr[0]));
-				mainRoster.setFirstName(tempArr[1]);
-			
-			}
-			br.close();
-		} catch(IOException ioe) {
-			ioe.printStackTrace();
-		}
-	}
+    {
+        Roster[] roster = new Roster[20];
+        try 
+        {
+            FileReader fr = new FileReader(csvFile);
+            BufferedReader br = new BufferedReader(fr);
+            String line = "";
+            String[] tempArr;
+            int i = 0;
+            while((line = br.readLine()) != null)
+            {
+                tempArr = line.split(delimiter);
+                roster[i].setId(Integer.parseInt(tempArr[0]));
+                roster[i].setFirstName(tempArr[1]);
+                roster[i].setLastName(tempArr[2]);
+                roster[i].setMajor(tempArr[3]);
+                roster[i].setLevel(tempArr[4]);
+                roster[i].setAsurite(tempArr[5]);
+                i++;
+            }
+            br.close();
+        } catch(IOException ioe) {
+            ioe.printStackTrace();
+        }
+    }
 	
 	public static void main(String[] args) 
 	{
@@ -101,7 +107,8 @@ public abstract class MainFrame extends JFrame implements ActionListener
 						ioe.printStackTrace();
 					}*/
 					
-					JOptionPane.showMessageDialog(mainFrame, "This is where we need to use the load method"); // get rid of this for the lead method
+					JOptionPane.showMessageDialog(mainFrame, "add roster stuff" );
+					// get rid of this for the lead method
 					break;
 				}
 			}

@@ -72,7 +72,7 @@ public class Roster {
         return level;
     }
 
-    public void setLevel()
+    public void setLevel(String level)
     {
         this.level = level;
     }
