@@ -62,7 +62,7 @@ public abstract class MainFrame extends JFrame implements ActionListener
 					
 					Roster[] mainRoster = new Roster[100];
 					
-					// work
+					// work please
 					/*try {
 						File file = new File(fileChosen);
 						FileReader fr = new FileReader(file);
