@@ -1,3 +1,4 @@
+import java.io.*;
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
@@ -18,7 +19,6 @@ public abstract class MainFrame extends JFrame implements ActionListener
 	static JMenuItem plotData; //option for plotting data
 	
 	static JFrame mainFrame; //main window for the application
-	
 	
 	public static void main(String[] args) 
 	{
@@ -41,6 +41,9 @@ public abstract class MainFrame extends JFrame implements ActionListener
 		aboutUs.addActionListener(new ActionListener() { 
 			public void actionPerformed(ActionEvent e)
 			{
+				//insert roster stuff
+				Roster mainRoster = new Roster();
+				
 				JOptionPane.showMessageDialog(mainFrame, "CSE360 Team: Keenan High, Brandon Phillips, Chase Brown, Jemiah Martin, Sergio Castillo"); //dialog box pop up with names
 			}
 		});
@@ -54,7 +57,7 @@ public abstract class MainFrame extends JFrame implements ActionListener
 				{
 				case JFileChooser.APPROVE_OPTION:
 					//LOAD ROSTER METHOD Here
-					JOptionPane.showMessageDialog(mainFrame, "This is where we need to use the load method");
+					JOptionPane.showMessageDialog(mainFrame, "This is where we need to use the load method"); // get rid of this for the lead method
 					break;
 				}
 			}
