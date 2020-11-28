@@ -22,7 +22,9 @@ public abstract class MainFrame extends JFrame implements ActionListener
 	
 	static JFrame mainFrame; //main window for the application
 	
-	public static Roster[] roster = new Roster[50];
+	public static Roster roster[] = new Roster[50];
+	
+	public static Roster startRoster = new Roster();
 	
 	public static Roster mainRoster = new Roster();
 	
@@ -38,13 +40,14 @@ public abstract class MainFrame extends JFrame implements ActionListener
             int i = 0;
             while((line = br.readLine()) != null)
             {
+            	roster[i] = startRoster;
                 tempArr = line.split(delimiter);
-                mainRoster.setId(Integer.parseInt(tempArr[0]));
-                mainRoster.setFirstName(tempArr[1]);
-                mainRoster.setLastName(tempArr[2]);
-                mainRoster.setMajor(tempArr[3]);
-                mainRoster.setLevel(tempArr[4]);
-                mainRoster.setAsurite(tempArr[5]);
+                roster[i].setId(Integer.parseInt(tempArr[0]));
+                roster[i].setFirstName(tempArr[1]);
+                roster[i].setLastName(tempArr[2]);
+                roster[i].setMajor(tempArr[3]);
+                roster[i].setLevel(tempArr[4]);
+                roster[i].setAsurite(tempArr[5]);
                 i++;
             }
             br.close();
@@ -109,7 +112,7 @@ public abstract class MainFrame extends JFrame implements ActionListener
 						ioe.printStackTrace();
 					}*/
 					
-					JOptionPane.showMessageDialog(mainFrame, "add roster stuff" + mainRoster.getId());
+					JOptionPane.showMessageDialog(mainFrame, roster[0].getFirstName() + " " + roster[1].getFirstName());
 					// get rid of this for the lead method
 					break;
 				}
