@@ -1,6 +1,7 @@
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
+import javax.swing.JFileChooser;
 
 public abstract class MainFrame extends JFrame implements ActionListener
 {
@@ -18,36 +19,46 @@ public abstract class MainFrame extends JFrame implements ActionListener
 
 	static JFrame mainFrame; //main window for the application
 
-	/* Need this to implement loading a roster
-	 * public void loadingRoster()
-	 * {
-	 * }
-	 */
-
 
 	public static void main(String[] args)
 	{
+		//Main stage for the program
 		mainFrame= new JFrame("CSE360 Final Project"); //creation of frame for main window with name "CSE360 Final Project"
 
+		//Addition of Menu Bar with items File and About
 		menuBar = new JMenuBar(); //creation of the main menu bar
 		fileMenu = new JMenu("File"); //creation of file drop down
 		aboutMenu = new JMenu("About"); //creation of about drop down
 
+		//Menu Item Additions
 		aboutUs = new JMenuItem("About Us"); //about us option in about
-
-
 		loadRoster = new JMenuItem("Load a Roster"); //load option in file
 		addAttendance = new JMenuItem("Add Attendance"); //add option
 		save = new JMenuItem("Save"); //save option
 		plotData = new JMenuItem("Plot Data"); //plot data option
 
-		aboutUs.addActionListener(new ActionListener() { //action listener for when someone clicks the about us menu option
+		//action listener for when someone clicks the about us menu option
+		aboutUs.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e)
 			{
 				JOptionPane.showMessageDialog(mainFrame, "CSE360 Team: Keenan High, Brandon Phillips, Chase Brown, Jemiah Martin, Sergio Castillo"); //dialog box pop up with names
 			}
 		});
 
+		//action listener for when clicking the load roster option
+		loadRoster.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e)
+			{
+				JFileChooser fileChooser = new JFileChooser();
+				switch (fileChooser.showOpenDialog(mainFrame))
+				{
+					case JFileChooser.APPROVE_OPTION:
+						//LOAD ROSTER METHOD Here
+						JOptionPane.showMessageDialog(mainFrame, "This is where we need to use the load method");
+						break;
+				}
+			}
+		});
 
 
 		//adding of all options to file
@@ -75,4 +86,3 @@ public abstract class MainFrame extends JFrame implements ActionListener
 
 
 }
-
