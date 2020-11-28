@@ -22,6 +22,29 @@ public abstract class MainFrame extends JFrame implements ActionListener
 	
 	static JFrame mainFrame; //main window for the application
 	
+	
+	public static void load(File csvFile)
+	{
+		Roster mainRoster = new Roster();
+		try 
+		{
+			FileReader fr = new FileReader(csvFile);
+			BufferedReader br = new BufferedReader(fr);
+			String line = "";
+			String[] tempArr;
+			while((line = br.readLine()) != null)
+			{
+				tempArr = line.split(delimiter);
+				mainRoster.setId(Integer.parseInt(tempArr[0]));
+				mainRoster.setFirstName(tempArr[1]);
+			
+			}
+			br.close();
+		} catch(IOException ioe) {
+			ioe.printStackTrace();
+		}
+	}
+	
 	public static void main(String[] args) 
 	{
 		//Main stage for the program
@@ -58,11 +81,9 @@ public abstract class MainFrame extends JFrame implements ActionListener
 				{
 				case JFileChooser.APPROVE_OPTION:
 					//LOAD ROSTER METHOD Here
-					File csvFile = fileChooser.getSelectedFile();
+					File newCSV = fileChooser.getSelectedFile();
+					load(newCSV);
 					
-					Roster[] mainRoster = new Roster[100];
-					
-					// work please
 					/*try {
 						File file = new File(fileChosen);
 						FileReader fr = new FileReader(file);
