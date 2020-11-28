@@ -9,6 +9,10 @@ import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
 
 public class ScatterPlot extends JFrame {
+
+    //attendance table array
+    Attendance[] attendance = new Attendance[20];
+
     //dataset creation
     XYDataset rosterData = createDataset();
 
