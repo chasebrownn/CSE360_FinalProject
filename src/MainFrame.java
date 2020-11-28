@@ -61,7 +61,8 @@ public abstract class MainFrame extends JFrame implements ActionListener
 					File csvFile = fileChooser.getSelectedFile();
 					
 					Roster[] mainRoster = new Roster[100];
-
+					
+					// work
 					/*try {
 						File file = new File(fileChosen);
 						FileReader fr = new FileReader(file);
