@@ -22,11 +22,13 @@ public abstract class MainFrame extends JFrame implements ActionListener
 	
 	static JFrame mainFrame; //main window for the application
 	
+	public static Roster[] roster = new Roster[50];
+	
 	public static Roster mainRoster = new Roster();
 	
 	public static void load(File csvFile)
     {
-        Roster[] roster = new Roster[20];
+        
         try 
         {
             FileReader fr = new FileReader(csvFile);
@@ -37,12 +39,12 @@ public abstract class MainFrame extends JFrame implements ActionListener
             while((line = br.readLine()) != null)
             {
                 tempArr = line.split(delimiter);
-                roster[i].setId(Integer.parseInt(tempArr[0]));
-                roster[i].setFirstName(tempArr[1]);
-                roster[i].setLastName(tempArr[2]);
-                roster[i].setMajor(tempArr[3]);
-                roster[i].setLevel(tempArr[4]);
-                roster[i].setAsurite(tempArr[5]);
+                mainRoster.setId(Integer.parseInt(tempArr[0]));
+                mainRoster.setFirstName(tempArr[1]);
+                mainRoster.setLastName(tempArr[2]);
+                mainRoster.setMajor(tempArr[3]);
+                mainRoster.setLevel(tempArr[4]);
+                mainRoster.setAsurite(tempArr[5]);
                 i++;
             }
             br.close();
@@ -107,7 +109,7 @@ public abstract class MainFrame extends JFrame implements ActionListener
 						ioe.printStackTrace();
 					}*/
 					
-					JOptionPane.showMessageDialog(mainFrame, "add roster stuff" );
+					JOptionPane.showMessageDialog(mainFrame, "add roster stuff" + mainRoster.getId());
 					// get rid of this for the lead method
 					break;
 				}
