@@ -1,3 +1,4 @@
+import java.io.*;
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
@@ -41,6 +42,8 @@ public abstract class MainFrame extends JFrame implements ActionListener
 			public void actionPerformed(ActionEvent e)
 			{
 				//insert roster stuff
+				Roster mainRoster = new Roster();
+				
 				JOptionPane.showMessageDialog(mainFrame, "CSE360 Team: Keenan High, Brandon Phillips, Chase Brown, Jemiah Martin, Sergio Castillo"); //dialog box pop up with names
 			}
 		});
