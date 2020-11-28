@@ -6,6 +6,8 @@ import javax.swing.JFileChooser;
 
 public abstract class MainFrame extends JFrame implements ActionListener
 {
+	public static final String delimiter = ",";
+
 	static JMenuBar menuBar; //object menubar
 	
 	static JMenu fileMenu; //menu button for main file operations
@@ -44,6 +46,8 @@ public abstract class MainFrame extends JFrame implements ActionListener
 				JOptionPane.showMessageDialog(mainFrame, "CSE360 Team: Keenan High, Brandon Phillips, Chase Brown, Jemiah Martin, Sergio Castillo"); //dialog box pop up with names
 			}
 		});
+
+
 		
 		//action listener for when clicking the load roster option
 		loadRoster.addActionListener(new ActionListener() {
@@ -55,6 +59,23 @@ public abstract class MainFrame extends JFrame implements ActionListener
 				case JFileChooser.APPROVE_OPTION:
 					//LOAD ROSTER METHOD Here
 					Roster[] mainRoster = new Roster[100];
+
+					/*try {
+						File file = new File(fileChosen);
+						FileReader fr = new FileReader(file);
+						BufferedReader br = new BufferedReader(fr);
+						String line = "";
+						while((line = br.readLine()) != null) {
+							mainRoster = line.split(delimiter);
+							for(String tempStr : tempArr) {
+								System.out.print(tempStr + " ");
+							}
+							System.out.println();
+						}
+						br.close();
+					} catch(IOException ioe) {
+						ioe.printStackTrace();
+					}*/
 					
 					JOptionPane.showMessageDialog(mainFrame, "This is where we need to use the load method"); // get rid of this for the lead method
 					break;
