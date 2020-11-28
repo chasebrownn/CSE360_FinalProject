@@ -58,6 +58,8 @@ public abstract class MainFrame extends JFrame implements ActionListener
 				{
 				case JFileChooser.APPROVE_OPTION:
 					//LOAD ROSTER METHOD Here
+					File csvFile = fileChooser.getSelectedFile();
+					
 					Roster[] mainRoster = new Roster[100];
 
 					/*try {
