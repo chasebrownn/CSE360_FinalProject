@@ -54,7 +54,7 @@ public abstract class MainFrame extends JFrame implements ActionListener
 				{
 				case JFileChooser.APPROVE_OPTION:
 					//LOAD ROSTER METHOD Here
-					Roster mainRoster = new Roster();
+					Roster[] mainRoster = new Roster[100];
 					
 					JOptionPane.showMessageDialog(mainFrame, "This is where we need to use the load method"); // get rid of this for the lead method
 					break;
