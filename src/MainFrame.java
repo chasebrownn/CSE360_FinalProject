@@ -23,6 +23,8 @@ public abstract class MainFrame extends JFrame implements ActionListener
 	static JMenuItem plotData; //option for plotting data
 	
 	static JFrame mainFrame; //main window for the application
+
+	//static JTable mainTable;
 	
 	public static List<Roster> roster = new ArrayList<>();
 	
@@ -52,6 +54,7 @@ public abstract class MainFrame extends JFrame implements ActionListener
         } catch(IOException ioe) {
             ioe.printStackTrace();
         }
+
     }
 	
 	public static void main(String[] args) 
@@ -80,7 +83,6 @@ public abstract class MainFrame extends JFrame implements ActionListener
 		});
 
 
-		
 		//action listener for when clicking the load roster option
 		loadRoster.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e)
@@ -111,12 +113,13 @@ public abstract class MainFrame extends JFrame implements ActionListener
 					}*/
 					
 					JOptionPane.showMessageDialog(mainFrame, roster.get(0).getFirstName() + " " + roster.get(1).getFirstName());
+
 					// get rid of this for the lead method
 					break;
 				}
+
 			}
 		});
-		
 		
 		//adding of all options to file
 		fileMenu.add(loadRoster);
@@ -139,7 +142,4 @@ public abstract class MainFrame extends JFrame implements ActionListener
 		mainFrame.setVisible(true); //setting it to be visible from start of application
 	}
 
-	
-
-	
 }

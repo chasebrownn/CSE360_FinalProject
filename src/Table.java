@@ -27,7 +27,7 @@ public class Table extends JFrame {
         }
 
         frame.add(scroll, BorderLayout.CENTER);
-        frame.setSize(300, 300);
+        frame.setSize(954, 300);
         frame.setVisible(true);
 
     }
