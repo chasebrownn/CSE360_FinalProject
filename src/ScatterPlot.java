@@ -70,6 +70,20 @@ public class ScatterPlot extends JFrame {
                     }
                // }
             }
+
+           /* to reference will be removed once implemented correctly
+           //November 3rd data points
+            XYSeries series1 = new XYSeries("November 3");
+
+            series1.add(1, 10);
+            rosterData.addSeries(series1);
+
+            //November 10th data points
+            XYSeries series2 = new XYSeries("November 10");
+            series2.add(1, 10);
+            series2.add(2, 15);
+
+            rosterData.addSeries(series2);*/
         }
 
         return attendanceData;
