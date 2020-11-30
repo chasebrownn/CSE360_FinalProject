@@ -91,26 +91,27 @@ public abstract class MainFrame extends JFrame implements ActionListener
 				switch (fileChooser.showOpenDialog(mainFrame))
 				{
 				case JFileChooser.APPROVE_OPTION:
+					File file = fileChooser.getSelectedFile();
+
 					//LOAD ROSTER METHOD Here
 					File newCSV = fileChooser.getSelectedFile();
 					load(newCSV);
 					
-					/*try {
-						File file = new File(fileChosen);
+					try {
 						FileReader fr = new FileReader(file);
 						BufferedReader br = new BufferedReader(fr);
 						String line = "";
-						while((line = br.readLine()) != null) {
+						/*while((line = br.readLine()) != null) {
 							mainRoster = line.split(delimiter);
-							for(String tempStr : tempArr) {
+							for(String tempStr : mainRoster) {
 								System.out.print(tempStr + " ");
 							}
 							System.out.println();
-						}
+						}*/
 						br.close();
 					} catch(IOException ioe) {
 						ioe.printStackTrace();
-					}*/
+					}
 					
 					JOptionPane.showMessageDialog(mainFrame, roster.get(0).getFirstName() + " " + roster.get(1).getFirstName());
 

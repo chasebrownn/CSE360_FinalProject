@@ -11,7 +11,7 @@ import org.jfree.data.xy.XYSeriesCollection;
 public class ScatterPlot extends JFrame {
 
     //attendance table array
-    Attendance[] attendance = new Attendance[20];
+
 
     //dataset creation
     XYDataset rosterData = createDataset();
@@ -21,7 +21,7 @@ public class ScatterPlot extends JFrame {
 
         //Create chart
         JFreeChart chart = ChartFactory.createScatterPlot("Roster",
-                "X-Axis", "Count", rosterData);
+                "% of Attendance", "Count of students", rosterData);
 
         //background color
         XYPlot plot = (XYPlot)chart.getPlot();

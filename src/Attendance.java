@@ -31,4 +31,9 @@ public class Attendance {
     public int getTime(){
         return time;
     }
+
+    public int addTime(int newTime){
+            time += newTime;
+            return time;
+            }
 }
