@@ -24,7 +24,7 @@ public abstract class MainFrame extends JFrame implements ActionListener
 	
 	static JFrame mainFrame; //main window for the application
 
-	//static JTable mainTable;
+	static JTable mainTable;
 	
 	public static List<Roster> roster = new ArrayList<>();
 	
