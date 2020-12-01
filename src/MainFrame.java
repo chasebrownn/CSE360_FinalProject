@@ -23,8 +23,6 @@ public abstract class MainFrame extends JFrame implements ActionListener
 	static JMenuItem plotData; //option for plotting data
 	
 	static JFrame mainFrame; //main window for the application
-
-	static JTable mainTable;
 	
 	public static List<Roster> roster = new ArrayList<>();
 	
@@ -54,7 +52,6 @@ public abstract class MainFrame extends JFrame implements ActionListener
         } catch(IOException ioe) {
             ioe.printStackTrace();
         }
-
     }
 	
 	public static void main(String[] args) 
@@ -83,44 +80,28 @@ public abstract class MainFrame extends JFrame implements ActionListener
 		});
 
 
+		
 		//action listener for when clicking the load roster option
 		loadRoster.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e)
 			{
-				JFileChooser fileChooser = new JFileChooser();
+				JFileChooser fileChooser = new JFileChooser(); //creation of chooser
 				switch (fileChooser.showOpenDialog(mainFrame))
 				{
 				case JFileChooser.APPROVE_OPTION:
-					File file = fileChooser.getSelectedFile();
-
-					//LOAD ROSTER METHOD Here
-					File newCSV = fileChooser.getSelectedFile();
-					load(newCSV);
 					
-					try {
-						FileReader fr = new FileReader(file);
-						BufferedReader br = new BufferedReader(fr);
-						String line = "";
-						/*while((line = br.readLine()) != null) {
-							mainRoster = line.split(delimiter);
-							for(String tempStr : mainRoster) {
-								System.out.print(tempStr + " ");
-							}
-							System.out.println();
-						}*/
-						br.close();
-					} catch(IOException ioe) {
-						ioe.printStackTrace();
-					}
+					File newCSV = fileChooser.getSelectedFile(); //set selected file to newCSV
+					load(newCSV); //load method for the selected CSV, loads the data into a Linked List
+					
+					//Table attTable = new Table(roster); //creation of new Table object
 					
 					JOptionPane.showMessageDialog(mainFrame, roster.get(0).getFirstName() + " " + roster.get(1).getFirstName());
-
 					// get rid of this for the lead method
 					break;
 				}
-
 			}
 		});
+		
 		
 		//adding of all options to file
 		fileMenu.add(loadRoster);
@@ -143,4 +124,7 @@ public abstract class MainFrame extends JFrame implements ActionListener
 		mainFrame.setVisible(true); //setting it to be visible from start of application
 	}
 
+	
+
+	
 }
