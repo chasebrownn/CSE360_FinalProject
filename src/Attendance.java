@@ -1,10 +1,11 @@
 public class Attendance {
-    //declare variables
+    
+	//declare variables
     private String asurite;
-    private int time;
+    private String time;
 
     //constructor
-    public Attendance(String asurite, int time){
+    public Attendance(String asurite, String time){
         this.asurite = asurite;
         this.time = time;
     }
@@ -12,7 +13,7 @@ public class Attendance {
     //default constructor
     public Attendance(){
         asurite = "asurite";
-        time = 70;
+        time = "100";
     }
 
     //setters
@@ -20,7 +21,7 @@ public class Attendance {
         this.asurite = asurite;
     }
 
-    public void setTime(int time) {
+    public void setTime(String time) {
         this.time = time;
     }
 
@@ -28,11 +29,11 @@ public class Attendance {
         return asurite;
     }
 
-    public int getTime(){
+    public String getTime(){
         return time;
     }
 
-    public int addTime(int newTime){
+    public String addTime(int newTime){
             time += newTime;
             return time;
             }

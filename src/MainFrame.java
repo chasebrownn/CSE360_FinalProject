@@ -29,7 +29,9 @@ public abstract class MainFrame extends JFrame implements ActionListener
 	static DefaultTableModel dTableModel = new DefaultTableModel(0,0); //default table setup
 	static String headers[] = {"ID", "First Name", "Last Name", "Program", "Level", "ASURITE"}; //headers for JTable
 	
-	public static List<Roster> rosterData = new ArrayList<>(); //array list for table data
+	public static List<Roster> rosterInfo = new ArrayList<>(); //array list for roster table data
+	public static List<Attendance> attendanceInfo = new ArrayList<>();
+	
 	public static ArrayList<String[]> tableData = new ArrayList<String[]>();
 	static JScrollPane scrollPane; //scroll pane for JTable
 	
@@ -53,13 +55,38 @@ public abstract class MainFrame extends JFrame implements ActionListener
                 added.setMajor(tempArr[3]);
                 added.setLevel(tempArr[4]);
                 added.setAsurite(tempArr[5]);
-                rosterData.add(added);
+                rosterInfo.add(added);
             }
             br.close();
         } catch(IOException ioe) {
             ioe.printStackTrace();
         }
     }
+	
+	public static void loadAtt(File attCSV)
+	{
+		try 
+        {
+            FileReader fr = new FileReader(attCSV);
+            BufferedReader br = new BufferedReader(fr);
+            String line = "";
+            String[] tempArr;
+ 
+            while((line = br.readLine()) != null)
+            {
+            	Attendance added = new Attendance();
+                tempArr = line.split(delimiter);
+                
+                added.setAsurite(tempArr[0]);
+                
+                added.setTime(tempArr[1]);
+                attendanceInfo.add(added);
+            }
+            br.close();
+        } catch(IOException ioe) {
+            ioe.printStackTrace();
+        }
+	}
 	
 	public static void main(String[] args) 
 	{
@@ -102,17 +129,17 @@ public abstract class MainFrame extends JFrame implements ActionListener
 					
 					dTableModel.setColumnIdentifiers(headers); //setting the headers
 					mainTable.setModel(dTableModel); //setting the table to default model
-					int rosterSize = rosterData.size(); //getting size of the roster
+					int rosterSize = rosterInfo.size(); //getting size of the roster
 					String [][] rosterLoaded = new String [rosterSize][6]; //creating new 2D array
 					
 					for (int i = 0; i < rosterSize; i++) //load all data points from the roster array list from CSV into the 2D array
 					{
-						rosterLoaded[i][0] = rosterData.get(i).getId();
-						rosterLoaded[i][1] = rosterData.get(i).getFirstName();
-						rosterLoaded[i][2] = rosterData.get(i).getLastName();
-						rosterLoaded[i][3] = rosterData.get(i).getMajor();
-						rosterLoaded[i][4] = rosterData.get(i).getLevel();
-						rosterLoaded[i][5] = rosterData.get(i).getAsurite();
+						rosterLoaded[i][0] = rosterInfo.get(i).getId();
+						rosterLoaded[i][1] = rosterInfo.get(i).getFirstName();
+						rosterLoaded[i][2] = rosterInfo.get(i).getLastName();
+						rosterLoaded[i][3] = rosterInfo.get(i).getMajor();
+						rosterLoaded[i][4] = rosterInfo.get(i).getLevel();
+						rosterLoaded[i][5] = rosterInfo.get(i).getAsurite();
 					}
 					
 					for (int i = 0; i < rosterLoaded.length; i++) //for every student, add them into the table and add a row
@@ -130,6 +157,41 @@ public abstract class MainFrame extends JFrame implements ActionListener
 					
 					break;
 				}
+			}
+		});
+		
+		//action listener for adding attendance
+		addAttendance.addActionListener(new ActionListener() { 
+			public void actionPerformed(ActionEvent e)
+			{
+				JFileChooser fileChooser = new JFileChooser(); //creation of chooser
+				switch (fileChooser.showOpenDialog(mainFrame))
+				{
+				case JFileChooser.APPROVE_OPTION:
+					
+					File newCSV = fileChooser.getSelectedFile(); //set selected file to newCSV
+					loadAtt(newCSV); //load method for the selected CSV, loads the data into a Linked List
+					
+					JOptionPane.showMessageDialog(mainFrame, "CSE360 Team: Keenan High, Brandon Phillips, Chase Brown, Jemiah Martin, Sergio Castillo"); //dialog box pop up with names
+					break;
+				
+				}
+			}
+		});
+		
+		//action listener for saving the table
+		save.addActionListener(new ActionListener() { 
+			public void actionPerformed(ActionEvent e)
+			{
+				JOptionPane.showMessageDialog(mainFrame, "CSE360 Team: Keenan High, Brandon Phillips, Chase Brown, Jemiah Martin, Sergio Castillo"); //dialog box pop up with names
+			}
+		});
+		
+		//action listener for plotting the data
+		plotData.addActionListener(new ActionListener() { 
+			public void actionPerformed(ActionEvent e)
+			{
+				JOptionPane.showMessageDialog(mainFrame, "CSE360 Team: Keenan High, Brandon Phillips, Chase Brown, Jemiah Martin, Sergio Castillo"); //dialog box pop up with names
 			}
 		});
 		
