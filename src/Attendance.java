@@ -33,8 +33,9 @@ public class Attendance {
         return time;
     }
 
-    public String addTime(int newTime){
-            time += newTime;
-            return time;
+    public int addTime(int newTime){
+            int timeInt = Integer.parseInt(time);
+    		timeInt += newTime;
+            return timeInt;
             }
 }
