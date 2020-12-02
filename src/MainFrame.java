@@ -177,6 +177,8 @@ public abstract class MainFrame extends JFrame implements ActionListener
 					dTableModel.addColumn("date");
 					
 					int attSize = attendanceInfo.size();
+					int studentsAdded = 0;
+					int moreStudents = 0;
 					String[][] attLoaded = new String [attSize][2];
 					
 					for (int i = 0; i < attSize; i++) //add all data from attendance Array list to 2D attendance list
@@ -190,9 +192,23 @@ public abstract class MainFrame extends JFrame implements ActionListener
 						mainTable.setValueAt("0", i, mainTable.getColumnCount() - 1);
 					}
 					
+					for (int i = 0; i < attLoaded.length; i++) //iterate through all of the attendances
+					{
+						for(int j = 0; j < mainTable.getRowCount(); j++) //iterate through all of the rows in the table
+						{
+							if (mainTable.getValueAt(j, 5).equals(attLoaded[i][0])) //if the value in the ASURITE column is the same as the one in any of the rows
+							{
+								mainTable.setValueAt(attLoaded[i][1], i, mainTable.getColumnCount() - 1); //set the value in the date column equal to what is in the attLoaded array
+								studentsAdded++;
+							}
+							else
+							{
+								moreStudents++;
+							}
+						}
+					}
 					
-					
-					JOptionPane.showMessageDialog(mainFrame, attendanceInfo.get(0).getTime());
+					JOptionPane.showMessageDialog(mainFrame, "Data loaded for " + studentsAdded + " users in the roster. \n" + moreStudents + " additional attendees were found:\n");
 					break;
 				
 				}
