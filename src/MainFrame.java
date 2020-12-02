@@ -9,6 +9,16 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+
+Chase Brown ( cabrow40 )
+Keenan High ( kwhigh )
+Sergio Castillo ( sgcastil )
+Brandon Phillips ( btphill4 )
+Jemiah Martin ( jrmart45 )
+
+ */
+
 /**
  * This is our "Main" class aka MainFrame. This is where all of the magic happens. It first declares all of the objects
  * needed to build our project interface; JMenuBar is our top menu bar, JMenuItem holds all of our "interactables"
