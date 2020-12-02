@@ -7,6 +7,8 @@ import javax.swing.JFileChooser;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
+import javafx.scene.control.DatePicker;
+
 public abstract class MainFrame extends JFrame implements ActionListener
 {
 	public static final String delimiter = ",";
@@ -35,7 +37,7 @@ public abstract class MainFrame extends JFrame implements ActionListener
 	public static ArrayList<String[]> tableData = new ArrayList<String[]>();
 	static JScrollPane scrollPane; //scroll pane for JTable
 	
-	public static void load(File csvFile)
+	public static void load(File csvFile) //load method to load all roster info from csv file
     {
         
         try 
@@ -63,7 +65,7 @@ public abstract class MainFrame extends JFrame implements ActionListener
         }
     }
 	
-	public static void loadAtt(File attCSV)
+	public static void loadAtt(File attCSV) //load method to load all attendance data from csv file
 	{
 		try 
         {
@@ -76,9 +78,7 @@ public abstract class MainFrame extends JFrame implements ActionListener
             {
             	Attendance added = new Attendance();
                 tempArr = line.split(delimiter);
-                
                 added.setAsurite(tempArr[0]);
-                
                 added.setTime(tempArr[1]);
                 attendanceInfo.add(added);
             }
@@ -169,10 +169,30 @@ public abstract class MainFrame extends JFrame implements ActionListener
 				{
 				case JFileChooser.APPROVE_OPTION:
 					
-					File newCSV = fileChooser.getSelectedFile(); //set selected file to newCSV
-					loadAtt(newCSV); //load method for the selected CSV, loads the data into a Linked List
+					File attCSV = fileChooser.getSelectedFile(); //set selected file to newCSV
+					loadAtt(attCSV); //load method for the selected CSV, loads the new attendance data into attendanceInfo array list
 					
-					JOptionPane.showMessageDialog(mainFrame, "CSE360 Team: Keenan High, Brandon Phillips, Chase Brown, Jemiah Martin, Sergio Castillo"); //dialog box pop up with names
+					//ADD DATE PICKER HERE
+					
+					dTableModel.addColumn("date");
+					
+					int attSize = attendanceInfo.size();
+					String[][] attLoaded = new String [attSize][2];
+					
+					for (int i = 0; i < attSize; i++) //add all data from attendance Array list to 2D attendance list
+					{
+						attLoaded[i][0] = attendanceInfo.get(i).getAsurite();
+						attLoaded[i][1] = attendanceInfo.get(i).getTime();
+					}
+					
+					for (int i = 0; i < mainTable.getRowCount(); i++) //set all attendance times to 0 by default
+					{
+						mainTable.setValueAt("0", i, mainTable.getColumnCount() - 1);
+					}
+					
+					
+					
+					JOptionPane.showMessageDialog(mainFrame, attendanceInfo.get(0).getTime());
 					break;
 				
 				}
@@ -183,16 +203,7 @@ public abstract class MainFrame extends JFrame implements ActionListener
 		save.addActionListener(new ActionListener() { 
 			public void actionPerformed(ActionEvent e)
 			{
-				if (tableData.size() > 0)
-				{
-					Save saveFile = new Save();
-					try {
-						saveFile.JtableToCSV(mainTable);
-					}
-					catch (Exception exc){
-						System.out.println("Error Saving"); // crash report
-					}
-				}
+				JOptionPane.showMessageDialog(mainFrame, "CSE360 Team: Keenan High, Brandon Phillips, Chase Brown, Jemiah Martin, Sergio Castillo"); //dialog box pop up with names
 			}
 		});
 		
