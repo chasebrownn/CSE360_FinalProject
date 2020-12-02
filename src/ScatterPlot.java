@@ -8,6 +8,16 @@ import org.jfree.data.xy.XYDataset;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
 
+/**
+ *  ScatterPlot.java is used for our "Plot Data" requirement. In this method our goal is to
+ *  create a chart using the attendance data per student. Specifically, a Scatter Plot.
+ *  Y-axis is how many students (0,n). X-axis is % of attendance ranging (0, 100), given
+ *  that 100% is attendance of 75min+.
+ *
+ *  To achieve this we extend JFrame and add a new Jpanel where we create a JFreeChart
+ *  using the mandatory JFreeChart library.
+ */
+
 public class ScatterPlot extends JFrame {
 
     //attendance table array
