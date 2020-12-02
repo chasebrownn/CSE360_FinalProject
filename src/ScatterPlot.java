@@ -78,6 +78,7 @@ public class ScatterPlot extends JFrame {
                         else
                             series.add(100, x + 1);
                     }
+                attendanceData.addSeries(series);
                // }
             }
 

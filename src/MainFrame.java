@@ -257,7 +257,17 @@ public abstract class MainFrame extends JFrame implements ActionListener
 		plotData.addActionListener(new ActionListener() { 
 			public void actionPerformed(ActionEvent e)
 			{
-				JOptionPane.showMessageDialog(mainFrame, "CSE360 Team: Keenan High, Brandon Phillips, Chase Brown, Jemiah Martin, Sergio Castillo"); //dialog box pop up with names
+				//JOptionPane.showMessageDialog(mainFrame, "CSE360 Team: Keenan High, Brandon Phillips, Chase Brown, Jemiah Martin, Sergio Castillo"); //dialog box pop up with names
+				if (mainTable.getColumnCount() > 0)
+				{
+					SwingUtilities.invokeLater(() -> {
+						ScatterPlot plotData = new ScatterPlot("Plot Data");
+						plotData.setSize(700, 500);
+						plotData.setLocationRelativeTo(null);
+						plotData.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+						plotData.setVisible(true);
+					});
+				}
 			}
 		});
 		
