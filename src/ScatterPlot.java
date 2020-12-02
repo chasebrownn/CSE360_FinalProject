@@ -59,14 +59,13 @@ public class ScatterPlot extends JFrame {
             /** Iterates for the column size*/
             for(int i = 0; i < MainFrame.mainTable.getColumnCount(); i++)
             {
-                //try {
                     XYSeries series = new XYSeries(MainFrame.mainTable.getColumnName(i));
 
                     /** Iterates for the row size*/
-                    for(int x = 0; x < MainFrame.mainTable.getRowCount(); x++){
+                    for(int x = 0; x <= MainFrame.mainTable.getRowCount() - 1 ; x++){
                         /** Creates a double for the attendance percent and parses the value as a
                          * string for the current index */
-                        double attendancePercent = Double.parseDouble((String) MainFrame.mainTable.getValueAt(i,x));
+                        double attendancePercent = Double.parseDouble((String) MainFrame.mainTable.getValueAt(i, MainFrame.mainTable.getColumnCount()-1));
 
                         /** Creates the percent and scales it to 100 */
                         attendancePercent = (attendancePercent / 75) * 100;
