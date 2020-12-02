@@ -95,7 +95,7 @@ public abstract class MainFrame extends JFrame implements ActionListener
 		{
 			if(a[i][0] != null)
 			{
-				s += a[i][0]+"\n";
+				s += a[i][0] + " for " + a[i][1] + " minutes \n";
 			}
 		}
 		return s;
@@ -187,7 +187,7 @@ public abstract class MainFrame extends JFrame implements ActionListener
 					
 					//ADD DATE PICKER HERE
 					
-					dTableModel.addColumn("date");
+					dTableModel.addColumn("Date");
 					
 					int attSize = attendanceInfo.size();
 					int studentsAdded = 0;
@@ -224,6 +224,7 @@ public abstract class MainFrame extends JFrame implements ActionListener
 						if (!match)
 						{
 							additionalAtt[moreStudents][0] = attLoaded[i][0];
+							additionalAtt[moreStudents][1] = attLoaded[i][1];
 							moreStudents++;
 						}
 					}
