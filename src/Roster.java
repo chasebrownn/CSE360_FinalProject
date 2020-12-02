@@ -45,62 +45,62 @@ public class Roster {
     	asurite = "asurite";
     }
     
-    public String getId()
+    public String getId() // get id
     {
         return student_id;
     }
 
-    public void setId(String tempArr)
+    public void setId(String tempArr) // set id
     {
         this.student_id = tempArr;
     }
 
-    public String getFirstName()
+    public String getFirstName() // get first name
     {
         return first_name;
     }
 
-    public void setFirstName(String first_name)
+    public void setFirstName(String first_name) // set first name
     {
         this.first_name = first_name;
     }
 
-    public String getLastName()
+    public String getLastName() // get last name
     {
         return last_name;
     }
 
-    public void setLastName(String last_name)
+    public void setLastName(String last_name) // set last name
     {
         this.last_name = last_name;
     }
 
-    public String getMajor()
+    public String getMajor() // get major
     {
         return major;
     }
 
-    public void setMajor(String major)
+    public void setMajor(String major) // set major
     {
         this.major = major;
     }
 
-    public String getLevel()
+    public String getLevel() // get level
     {
         return level;
     }
 
-    public void setLevel(String level)
+    public void setLevel(String level) // set level
     {
         this.level = level;
     }
 
-    public String getAsurite()
+    public String getAsurite() // get asurite
     {
         return asurite;
     }
 
-    public void setAsurite(String asurite)
+    public void setAsurite(String asurite) // set asurite
     {
         this.asurite = asurite;
     }
