@@ -1,13 +1,13 @@
 public class Roster {
 
-    private int student_id;
+    private String student_id;
     private String first_name;
     private String last_name;
     private String major;
     private String level;
     private String asurite;
 
-    public Roster(int student_id, String first_name, String last_name, String major, String level, String asurite)
+    public Roster(String student_id, String first_name, String last_name, String major, String level, String asurite)
     {
         this.student_id = student_id;
         this.first_name = first_name;
@@ -19,7 +19,7 @@ public class Roster {
 
     public Roster() 
     {
-    	student_id = 1234567890;
+    	student_id = "1234567890";
     	first_name = "first";
     	last_name = "last";
     	major = "major";
@@ -27,14 +27,14 @@ public class Roster {
     	asurite = "asurite";
     }
     
-    public int getId()
+    public String getId()
     {
         return student_id;
     }
 
-    public void setId(int student_id)
+    public void setId(String tempArr)
     {
-        this.student_id = student_id;
+        this.student_id = tempArr;
     }
 
     public String getFirstName()

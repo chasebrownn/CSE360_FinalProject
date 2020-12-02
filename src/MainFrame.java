@@ -5,6 +5,7 @@ import javax.swing.*;
 import java.awt.event.*;
 import javax.swing.JFileChooser;
 import java.util.List;
+import javax.swing.table.DefaultTableModel;
 
 public abstract class MainFrame extends JFrame implements ActionListener
 {
@@ -24,7 +25,13 @@ public abstract class MainFrame extends JFrame implements ActionListener
 	
 	static JFrame mainFrame; //main window for the application
 	
-	public static List<Roster> roster = new ArrayList<>();
+	public static JTable mainTable = new JTable(); //JTable creation
+	static DefaultTableModel dTableModel = new DefaultTableModel(0,0); //default table setup
+	static String headers[] = {"ID", "First Name", "Last Name", "Program", "Level", "ASURITE"}; //headers for JTable
+	
+	public static List<Roster> rosterData = new ArrayList<>(); //array list for table data
+	public static ArrayList<String[]> tableData = new ArrayList<String[]>();
+	static JScrollPane scrollPane; //scroll pane for JTable
 	
 	public static void load(File csvFile)
     {
@@ -40,13 +47,13 @@ public abstract class MainFrame extends JFrame implements ActionListener
             {
             	Roster added = new Roster();
                 tempArr = line.split(delimiter);
-                added.setId(Integer.parseInt(tempArr[0]));
+                added.setId(tempArr[0]);
                 added.setFirstName(tempArr[1]);
                 added.setLastName(tempArr[2]);
                 added.setMajor(tempArr[3]);
                 added.setLevel(tempArr[4]);
                 added.setAsurite(tempArr[5]);
-                roster.add(added);
+                rosterData.add(added);
             }
             br.close();
         } catch(IOException ioe) {
@@ -93,10 +100,34 @@ public abstract class MainFrame extends JFrame implements ActionListener
 					File newCSV = fileChooser.getSelectedFile(); //set selected file to newCSV
 					load(newCSV); //load method for the selected CSV, loads the data into a Linked List
 					
-					//Table attTable = new Table(roster); //creation of new Table object
+					dTableModel.setColumnIdentifiers(headers); //setting the headers
+					mainTable.setModel(dTableModel); //setting the table to default model
+					int rosterSize = rosterData.size(); //getting size of the roster
+					String [][] rosterLoaded = new String [rosterSize][6]; //creating new 2D array
 					
-					JOptionPane.showMessageDialog(mainFrame, roster.get(0).getFirstName() + " " + roster.get(1).getFirstName());
-					// get rid of this for the lead method
+					for (int i = 0; i < rosterSize; i++) //load all data points from the roster array list from CSV into the 2D array
+					{
+						rosterLoaded[i][0] = rosterData.get(i).getId();
+						rosterLoaded[i][1] = rosterData.get(i).getFirstName();
+						rosterLoaded[i][2] = rosterData.get(i).getLastName();
+						rosterLoaded[i][3] = rosterData.get(i).getMajor();
+						rosterLoaded[i][4] = rosterData.get(i).getLevel();
+						rosterLoaded[i][5] = rosterData.get(i).getAsurite();
+					}
+					
+					for (int i = 0; i < rosterLoaded.length; i++) //for every student, add them into the table and add a row
+					{
+						tableData.add(rosterLoaded[i]);
+						dTableModel.addRow(rosterLoaded[i]);
+					}
+					
+					scrollPane = new JScrollPane(mainTable); //add the table to the scroll pane
+					scrollPane.setVerticalScrollBarPolicy(scrollPane.VERTICAL_SCROLLBAR_ALWAYS); //add the scroll bars to be there always
+					scrollPane.setHorizontalScrollBarPolicy(scrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+					
+					mainFrame.add(scrollPane); //add the scroll pane to the main frame
+					SwingUtilities.updateComponentTreeUI(mainFrame); //update all components of the frame
+					
 					break;
 				}
 			}
