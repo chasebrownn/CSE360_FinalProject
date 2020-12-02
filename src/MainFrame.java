@@ -191,20 +191,26 @@ public abstract class MainFrame extends JFrame implements ActionListener
 					{
 						mainTable.setValueAt("0", i, mainTable.getColumnCount() - 1);
 					}
+
+					boolean match = false;
 					
-					for (int i = 0; i < attLoaded.length; i++) //iterate through all of the attendances
+					for (int i = 0; i < attLoaded.length; i++) //iterate through all of the attendances //3
 					{
-						for(int j = 0; j < mainTable.getRowCount(); j++) //iterate through all of the rows in the table
+						match = false;
+
+						for(int j = 0; j < mainTable.getRowCount(); j++) //iterate through all of the rows in the table //3
 						{
 							if (mainTable.getValueAt(j, 5).equals(attLoaded[i][0])) //if the value in the ASURITE column is the same as the one in any of the rows
 							{
 								mainTable.setValueAt(attLoaded[i][1], i, mainTable.getColumnCount() - 1); //set the value in the date column equal to what is in the attLoaded array
 								studentsAdded++;
+
+								match = true;
 							}
-							else
-							{
-								moreStudents++;
-							}
+						}
+						if (!match)
+						{
+							moreStudents++;
 						}
 					}
 					
