@@ -14,6 +14,17 @@ public class Roster {
     private String level;
     private String asurite;
 
+    /**
+     * This constructor Roster() is for initializing the student variables before loading it with the correct
+     *  information.
+     * @param student_id contains a 10 digit student ID specific to every student
+     * @param first_name student's first name
+     * @param last_name student's last name
+     * @param major display's student's field of study
+     * @param level whether graduate, undergraduate, etc.
+     * @param asurite asu-specific username / email
+     */
+
     public Roster(String student_id, String first_name, String last_name, String major, String level, String asurite)
     {
         this.student_id = student_id;
