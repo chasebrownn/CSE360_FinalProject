@@ -88,6 +88,19 @@ public abstract class MainFrame extends JFrame implements ActionListener
         }
 	}
 	
+	public static String printAdd(String[][] a)
+	{
+		String s = "";
+		for(int i = 0; i < a.length; i++)
+		{
+			if(a[i][0] != null)
+			{
+				s += a[i][0]+"\n";
+			}
+		}
+		return s;
+	}
+	
 	public static void main(String[] args) 
 	{
 		//Main stage for the program
@@ -180,7 +193,7 @@ public abstract class MainFrame extends JFrame implements ActionListener
 					int studentsAdded = 0;
 					int moreStudents = 0;
 					String[][] attLoaded = new String [attSize][2];
-					
+					String[][] additionalAtt = new String[attSize][2];
 					for (int i = 0; i < attSize; i++) //add all data from attendance Array list to 2D attendance list
 					{
 						attLoaded[i][0] = attendanceInfo.get(i).getAsurite();
@@ -210,11 +223,13 @@ public abstract class MainFrame extends JFrame implements ActionListener
 						}
 						if (!match)
 						{
+							additionalAtt[moreStudents][0] = attLoaded[i][0];
 							moreStudents++;
 						}
 					}
 					
-					JOptionPane.showMessageDialog(mainFrame, "Data loaded for " + studentsAdded + " users in the roster. \n" + moreStudents + " additional attendees were found:\n");
+					JOptionPane.showMessageDialog(mainFrame, "Data loaded for " + studentsAdded + " users in the roster. \n" + moreStudents + " additional attendees were found:\n" + printAdd(additionalAtt));
+					
 					break;
 				
 				}
