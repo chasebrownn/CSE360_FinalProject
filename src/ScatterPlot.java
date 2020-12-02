@@ -45,15 +45,13 @@ public class ScatterPlot extends JFrame {
     }
 
     /** create the plot points in the chart
-     * Y-axis is how many students (0 to total row)
+     * The Student Number (0 to total row)
      * X-axis is % of attendance (100% is 75 minutes or more)
      */
     private XYDataset createDataset() {
         //roster series creation
         XYSeriesCollection attendanceData = new XYSeriesCollection();
 
-        /** Checks to see if mainTable has attendance column
-         */
         if(MainFrame.mainTable.getValueAt(0,6) != null)
         {
                     XYSeries series = new XYSeries(MainFrame.mainTable.getColumnName(6));
