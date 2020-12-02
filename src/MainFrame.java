@@ -240,7 +240,7 @@ public abstract class MainFrame extends JFrame implements ActionListener
 		save.addActionListener(new ActionListener() { 
 			public void actionPerformed(ActionEvent e)
 			{
-				JOptionPane.showMessageDialog(mainFrame, "CSE360 Team: Keenan High, Brandon Phillips, Chase Brown, Jemiah Martin, Sergio Castillo"); //dialog box pop up with names
+				// Save here
 			}
 		});
 		
