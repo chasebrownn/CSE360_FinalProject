@@ -126,8 +126,6 @@ public abstract class MainFrame extends JFrame implements ActionListener
 			}
 		});
 
-
-		
 		//action listener for when clicking the load roster option
 		loadRoster.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e)
