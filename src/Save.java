@@ -30,19 +30,17 @@ public class Save
 
             for (int Column = 0; Column < model.getColumnCount(); Column++) // searches Jtable for data and prints it on selected file
             {
-                if (Column > 0)
-                {
+                if (Column > 0) {
                     bw.write(",");
                 }
                 bw.write(model.getColumnName(Column));
             }
             for (int row = 0; row < model.getRowCount(); row++) // searches Jtable for data and prints it on selected file
-            {
+                // {
                 bw.newLine();
                 for (int column = 0; column < model.getColumnCount(); column++) // searches Jtable for data and prints it on selected file
                 {
-                    if (column > 0)
-                    {
+                    if (column > 0) {
                         bw.write(",");
                     }
                     bw.write(model.getValueAt(row, column).toString()); //prints Jtable data onto CSV file
