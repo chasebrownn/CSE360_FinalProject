@@ -3,6 +3,13 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.util.List;
 
+/**
+ * The Table.java class is used for building the table you see once you load the student roster.
+ * It builds the table by using the JTable frame which is then added to our main table model and given headers.
+ * It is then filled with the information (outside of this class) that is pulled from the loaded .csv file which
+ * is sorted amongst the 6 categories listen in the table header.
+ */
+
 public class Table extends JFrame {
 
     JTable frame = new JTable();

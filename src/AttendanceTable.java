@@ -3,6 +3,7 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.util.List;
 
+/*
 public class AttendanceTable extends JFrame {
 
     JTable frame = new JTable();
@@ -23,6 +24,6 @@ public class AttendanceTable extends JFrame {
                     }
     }
 
-}
+}*/
 
 

@@ -9,6 +9,15 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This is our "Main" class aka MainFrame. This is where all of the magic happens. It first declares all of the objects
+ * needed to build our project interface; JMenuBar is our top menu bar, JMenuItem holds all of our "interactables"
+ * or all of the different objects the user can click and interact with. Such as save, load roster, about, plot, and
+ * add attendance. Under that you can find the JTable which is where we write our table from Table.java
+ * We then declare our 2d arrays which is where we store our student data pulled from the loadroster csv and the
+ * add attendnace csv.
+ */
+
 public abstract class MainFrame extends JFrame implements ActionListener
 {
 	public static final String delimiter = ",";
@@ -36,6 +45,13 @@ public abstract class MainFrame extends JFrame implements ActionListener
 	
 	public static ArrayList<String[]> tableData = new ArrayList<String[]>();
 	static JScrollPane scrollPane; //scroll pane for JTable
+
+	/**
+	 * Our load() method takes csvFile and iterates through every line that is not NULL. When the line is not NULL
+	 * it pulls the student's information in the 6 categories in order from student ID all the way to asurite and
+	 * adds it to our student roster
+	 * @param csvFile The csvFile is our file that the user loads into the program which holds our roster info
+	 */
 	
 	public static void load(File csvFile) //load method to load all roster info from csv file
     {
@@ -64,7 +80,14 @@ public abstract class MainFrame extends JFrame implements ActionListener
             ioe.printStackTrace();
         }
     }
-	
+
+	/**
+	 * LoadAtt() is what is called when the user wants to load attendance for the existing students within the
+	 * roster. This is done after load() is terminated.
+	 * @param attCSV Is the csv file that the user loads into the program. This file holds 2 categories, asurite and
+	 *               time attended class (in minutes)
+	 */
+
 	public static void loadAtt(File attCSV) //load method to load all attendance data from csv file
 	{
 		try 
@@ -87,6 +110,12 @@ public abstract class MainFrame extends JFrame implements ActionListener
             ioe.printStackTrace();
         }
 	}
+
+	/**
+	 * This called to display any students that were add via attendance, but werent included in the roster.
+	 * @param a 2d array holding the students' information: asurite and attendance
+	 * @return a stacked string holding a sentence in the form of "asurite for x minutes"
+	 */
 	
 	public static String printAdd(String[][] a)
 	{
@@ -100,6 +129,11 @@ public abstract class MainFrame extends JFrame implements ActionListener
 		}
 		return s;
 	}
+
+	/**
+	 * Main method
+	 * @param args Input
+	 */
 	
 	public static void main(String[] args) 
 	{
@@ -170,7 +204,11 @@ public abstract class MainFrame extends JFrame implements ActionListener
 				}
 			}
 		});
-		
+
+		/**
+		 * Adding new attendacne for existing roster when addAttendance is clicked
+		 */
+
 		//action listener for adding attendance
 		addAttendance.addActionListener(new ActionListener() { 
 			public void actionPerformed(ActionEvent e)
@@ -234,7 +272,13 @@ public abstract class MainFrame extends JFrame implements ActionListener
 				}
 			}
 		});
-		
+
+		/**
+		 * This is our save method when Save is clicked. When save is clicked and there exists a table that is not
+		 * NULL aka a table that is worth saving or a table actually holding student information, we call our save
+		 * class Save.java where we create the .csv downloadable.
+		 */
+
 		//action listener for saving the table
 		save.addActionListener(new ActionListener() { 
 			public void actionPerformed(ActionEvent e)
@@ -251,7 +295,12 @@ public abstract class MainFrame extends JFrame implements ActionListener
 				}
 			}
 		});
-		
+
+		/**
+		 * This is our method that is called when plot data is clicked. It calls the plot data method and writes
+		 * the scatterplot found in ScatterPlot.java
+		 */
+
 		//action listener for plotting the data
 		plotData.addActionListener(new ActionListener() { 
 			public void actionPerformed(ActionEvent e)

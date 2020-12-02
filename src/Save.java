@@ -14,8 +14,6 @@ import java.io.BufferedWriter;
 
 public class Save
 {
-    public String  fileName = "output.csv";
-
     public void JtableToCSV(JTable table) throws IOException {
         JFileChooser fc = new JFileChooser(); // Maps path from java to documents
         int returnVal = fc.showSaveDialog(null);
