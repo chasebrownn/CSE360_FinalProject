@@ -65,11 +65,7 @@ public class ScatterPlot extends JFrame {
                     for(int x = 0; x <= MainFrame.mainTable.getRowCount() - 1 ; x++){
                         /** Creates a double for the attendance percent and parses the value as a
                          * string for the current index */
-<<<<<<< HEAD
-                        double attendancePercent = Double.parseDouble((String) MainFrame.mainTable.getValueAt(x,6));
-=======
                         double attendancePercent = Double.parseDouble((String) MainFrame.mainTable.getValueAt(i, MainFrame.mainTable.getColumnCount()-1));
->>>>>>> branch 'master' of https://github.com/chasebrownn/CSE360_FinalProject
 
                         /** Creates the percent and scales it to 100 */
                         attendancePercent = (attendancePercent / 75) * 100;
