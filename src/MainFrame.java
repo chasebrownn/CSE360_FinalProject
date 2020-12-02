@@ -1,13 +1,13 @@
-import java.io.*;
-import java.util.ArrayList;
-import java.awt.*;
 import javax.swing.*;
-import java.awt.event.*;
-import javax.swing.JFileChooser;
-import java.util.List;
 import javax.swing.table.DefaultTableModel;
-
-import javafx.scene.control.DatePicker;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public abstract class MainFrame extends JFrame implements ActionListener
 {
@@ -240,7 +240,16 @@ public abstract class MainFrame extends JFrame implements ActionListener
 		save.addActionListener(new ActionListener() { 
 			public void actionPerformed(ActionEvent e)
 			{
-				// Save here
+				if (tableData.size() > 0)
+				{
+					Save saveFile = new Save();
+					try {
+						saveFile.JtableToCSV(mainTable);
+					}
+					catch (Exception exc){
+						System.out.println("Error Saving"); // crash report
+					}
+				}
 			}
 		});
 		

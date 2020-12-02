@@ -36,7 +36,7 @@ public class Save
                 bw.write(model.getColumnName(Column));
             }
             for (int row = 0; row < model.getRowCount(); row++) // searches Jtable for data and prints it on selected file
-                // {
+                {
                 bw.newLine();
                 for (int column = 0; column < model.getColumnCount(); column++) // searches Jtable for data and prints it on selected file
                 {
