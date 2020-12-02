@@ -23,20 +23,16 @@ public class Save
         {
 
             TableModel model = table.getModel(); // creates table model
-
             FileWriter csv = new FileWriter(fc.getSelectedFile()+".csv"); // will select a file from documents
-
             BufferedWriter bw = new BufferedWriter(csv);
 
-            for (int Column = 0; Column < model.getColumnCount(); Column++) // searches Jtable for data and prints it on selected file
-            {
+            for (int Column = 0; Column < model.getColumnCount(); Column++) { // searches Jtable for data and prints it on selected file
                 if (Column > 0) {
                     bw.write(",");
                 }
                 bw.write(model.getColumnName(Column));
             }
-            for (int row = 0; row < model.getRowCount(); row++) // searches Jtable for data and prints it on selected file
-                // {
+            for (int row = 0; row < model.getRowCount(); row++) { // searches Jtable for data and prints it on selected file
                 bw.newLine();
                 for (int column = 0; column < model.getColumnCount(); column++) // searches Jtable for data and prints it on selected file
                 {
