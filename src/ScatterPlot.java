@@ -56,11 +56,7 @@ public class ScatterPlot extends JFrame {
          */
         if(MainFrame.mainTable.getValueAt(0,6) != null)
         {
-            /** Iterates for the column size*/
-            for(int i = 0; i < MainFrame.mainTable.getColumnCount(); i++)
-            {
-                //try {
-                    XYSeries series = new XYSeries(MainFrame.mainTable.getColumnName(i));
+                    XYSeries series = new XYSeries(MainFrame.mainTable.getColumnName(6));
 
                     /** Iterates for the row size*/
                     for(int x = 0; x < MainFrame.mainTable.getRowCount(); x++){
@@ -79,37 +75,11 @@ public class ScatterPlot extends JFrame {
                             series.add(100, x + 1);
                     }
                 attendanceData.addSeries(series);
-               // }
-            }
-
-           /* to reference will be removed once implemented correctly
-           //November 3rd data points
-            XYSeries series1 = new XYSeries("November 3");
-
-            series1.add(1, 10);
-            rosterData.addSeries(series1);
-
-            //November 10th data points
-            XYSeries series2 = new XYSeries("November 10");
-            series2.add(1, 10);
-            series2.add(2, 15);
-
-            rosterData.addSeries(series2);*/
         }
 
         return attendanceData;
     }
 
-/*
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            ScatterPlot plot = new ScatterPlot("Roster Scatterplot");
-            plot.setSize(800, 400);
-            plot.setLocationRelativeTo(null);
-            plot.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-            plot.setVisible(true);
-        });
-    }*/
 }
 
 
