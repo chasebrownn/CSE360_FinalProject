@@ -1,3 +1,10 @@
+/**
+ *  Roster.java is our student roster constructor class. It contains the getters and setters for what is contained
+ *  in our student object rows which will be displayed in our roster table following a .csv import. Simply declares
+ *  6 different variables when you declare 1 roster object i.e. a new student. Those 6 variables include their student
+ *  ID, first name, last name, major, level of graduate, and asurite username.
+ */
+
 public class Roster {
 
     private String student_id;
